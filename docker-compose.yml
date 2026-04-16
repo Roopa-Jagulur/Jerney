@@ -44,11 +44,19 @@ services:
         condition: service_healthy
     # Security: do not run as root (already in Dockerfile, but enforced here too)
     security_opt:
+<<<<<<< HEAD
       - no-new-privileges:true
     read_only: true
     tmpfs:
       - /tmp
       - /run
+=======
+       - seccomp=unconfined
+    #  - no-new-privileges:true
+    #read_only: true
+    #tmpfs:
+    #  - /tmp
+>>>>>>> 71a46fc (Docker compose local ready not production ready - changes)
 
   # ---- Frontend (Nginx + React) ----
   frontend:
@@ -62,7 +70,8 @@ services:
     depends_on:
       - backend
     security_opt:
-      - no-new-privileges:true
+      #- no-new-privileges:true
+      - seccomp=unconfined
 
 volumes:
   pgdata:
