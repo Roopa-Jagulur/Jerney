@@ -48,6 +48,7 @@ services:
     read_only: true
     tmpfs:
       - /tmp
+      - /run
 
   # ---- Frontend (Nginx + React) ----
   frontend:
